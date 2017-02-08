@@ -4,11 +4,11 @@ import csv
 from item_parser import parse_items_for_player
 #from pprint import pprint
 
-with open('../raw_data/matches1.json') as matches_data:
-  matches = json.load(matches_data)
+def format_player_stats():
+  with open('../raw_data/matches1.json') as matches_data:
+    matches = json.load(matches_data)
 
-with open('../formatted_data/player_stats.csv', 'wb') as csvfile:
-  writer = csv.writer(csvfile, delimiter=',', quoting=csv.QUOTE_MINIMAL)
+  players_stats = []
   for match in matches['matches']:
     for player in match['participants']:
       player_stats = []
@@ -43,6 +43,7 @@ with open('../formatted_data/player_stats.csv', 'wb') as csvfile:
       player_stats.append(player['stats']['wardsPlaced'])
       player_stats.append(player['stats']['wardsKilled'])
       player_stats += parse_items_for_player(player)
-      writer.writerow(player_stats)
+      players_stats.append(player_stats)
       #print playerStats
 
+  return players_stats
