@@ -1,12 +1,8 @@
-import json
-import csv
-
+from dataset_io import read_json
 from item_parser import parse_items_for_player
-#from pprint import pprint
 
 def format_player_stats():
-  with open('../raw_data/matches1.json') as matches_data:
-    matches = json.load(matches_data)
+  matches = read_json('../raw_data/matches1.json')
 
   players_stats = []
   for match in matches['matches']:
@@ -15,16 +11,16 @@ def format_player_stats():
       player_stats.append(match['matchDuration'])
       player_stats.append(player['timeline']['creepsPerMinDeltas']['zeroToTen'])
       player_stats.append(player['timeline']['creepsPerMinDeltas']['tenToTwenty'])
-      #playerStats.append(player['timeline']['creepsPerMinDeltas']['twentyToThirty'])
-      #playerStats.append(player['timeline']['creepsPerMinDeltas']['thirtyToEnd'])
+      #player_stats.append(player['timeline']['creepsPerMinDeltas']['twentyToThirty'])
+      #player_stats.append(player['timeline']['creepsPerMinDeltas']['thirtyToEnd'])
       #player_stats.append(player['timeline']['xpPerMinDeltas']['zeroToTen'])
       #player_stats.append(player['timeline']['xpPerMinDeltas']['tenToTwenty'])
-      #playerStats.append(player['timeline']['xpPerMinDeltas']['twentyToThirty'])
+      #player_stats.append(player['timeline']['xpPerMinDeltas']['twentyToThirty'])
       #playerStats.append(player['timeline']['xpPerMinDeltas']['thirtyToEnd'])
       player_stats.append(player['timeline']['goldPerMinDeltas']['zeroToTen'])
       player_stats.append(player['timeline']['goldPerMinDeltas']['tenToTwenty'])
-      #playerStats.append(player['timeline']['goldPerMinDeltas']['twentyToThirty'])
-      #playerStats.append(player['timeline']['goldPerMinDeltas']['thirtyToEnd'])
+      #player_stats.append(player['timeline']['goldPerMinDeltas']['twentyToThirty'])
+      #player_stats.append(player['timeline']['goldPerMinDeltas']['thirtyToEnd'])
       player_stats.append(player['stats']['kills'])
       player_stats.append(player['stats']['deaths'])
       player_stats.append(player['stats']['assists'])

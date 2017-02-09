@@ -1,7 +1,6 @@
-import json
+from dataset_io import read_json
 
-with open('../raw_data/item.json') as items_data:
-  items = json.load(items_data)['data']
+items = read_json('../raw_data/item.json')['data']
 
 def parse_items_for_player(player):
   #0 fhp
