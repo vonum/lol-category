@@ -13,3 +13,11 @@ def write_csv(filename, data):
     for row in data:
       writer.writerow(row)
 
+def read_csv(filename):
+  data = []
+  with open(filename, 'rb') as csv_file:
+    reader = csv.reader(csv_file, delimiter=',', quoting=csv.QUOTE_MINIMAL)
+    for row in reader:
+      data.append(row)
+
+  return data
