@@ -25,7 +25,7 @@ def parse_items_for_player(player):
     player['stats']['item4'],
     player['stats']['item5']
   ]
-  stats = [0] * 13
+  stats = [0] * 10 #13
 
   for player_item_id in player_items:
     if str(player_item_id) in items:
@@ -37,28 +37,28 @@ def parse_items_for_player(player):
           stats[0] += item_stats[stat]
         elif stat == 'FlatMPPoolMod':
           stats[1] += item_stats[stat]
-        elif stat == 'PercentHPRegenMod':
-          stats[2] += item_stats[stat] * 100
-        elif stat == 'PercentMPRegenMod':
-          stats[3] += item_stats[stat] * 100
+        #elif stat == 'PercentHPRegenMod':
+          #stats[2] += item_stats[stat] * 100
+        #elif stat == 'PercentMPRegenMod':
+        #  stats[3] += item_stats[stat] * 100
         elif stat == 'FlatArmorMod':
-          stats[4] += item_stats[stat]
+          stats[2] += item_stats[stat]
         elif stat == 'FlatSpellBlockMod':
-          stats[5] += item_stats[stat]
+          stats[3] += item_stats[stat]
         elif stat == 'FlatPhysicalDamageMod':
-          stats[6] += item_stats[stat]
+          stats[4] += item_stats[stat]
         elif stat == 'FlatMagicDamageMod':
-          stats[7] += item_stats[stat]
+          stats[5] += item_stats[stat]
         elif stat == 'FlatMovementSpeedMod':
-          stats[8] += item_stats[stat]
+          stats[6] += item_stats[stat]
         elif stat == 'PercentMovementSpeedMod':
-          stats[9] += item_stats[stat] * 100
+          stats[7] += item_stats[stat] * 100
         elif stat == 'PercentAttackSpeedMod':
-          stats[10] += item_stats[stat] * 100
-        elif stat == 'PercentCritChanceMod':
-          stats[11] += item_stats[stat] * 100
+          stats[8] += item_stats[stat] * 100
+        #elif stat == 'PercentCritChanceMod':
+        #  stats[9] += item_stats[stat] * 100
         elif stat == 'PercentLifeStealMod':
-          stats[12] += item_stats[stat] * 100
+          stats[9] += item_stats[stat] * 100
 
   return stats
 
