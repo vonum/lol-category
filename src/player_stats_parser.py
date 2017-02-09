@@ -12,6 +12,7 @@ def format_player_stats():
   for match in matches['matches']:
     for player in match['participants']:
       player_stats = []
+      player_stats.append(match['matchDuration'])
       player_stats.append(player['timeline']['creepsPerMinDeltas']['zeroToTen'])
       player_stats.append(player['timeline']['creepsPerMinDeltas']['tenToTwenty'])
       #playerStats.append(player['timeline']['creepsPerMinDeltas']['twentyToThirty'])
