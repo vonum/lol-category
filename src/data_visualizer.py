@@ -1,29 +1,8 @@
 import numpy as np
 from sklearn import decomposition
+from matplotlib import pyplot as plt
 
 from dataset_io import read_csv
-
-def reduce_with_pca_example():
-  pca = decomposition.PCA(n_components=2)
-  x1 = np.random.normal(size=100)
-  x2 = np.random.normal(size=100)
-  x3 = x1 + x2
-  x = np.c_[x1, x2, x3]
-
-  print x.shape
-
-  pca.fit(x)
-
-  print pca.explained_variance_
-
-  x_reduced = pca.fit_transform(x)
-
-  print x_reduced.shape
-
-  print x
-  print x_reduced
-
-reduce_with_pca_example()
 
 def reduce_with_pca():
   data = read_csv('../formatted_data/player_stats_z_normalized.csv')
@@ -33,4 +12,16 @@ def reduce_with_pca():
 
   return pca.fit_transform(data)
 
-print reduce_with_pca()
+def plot_2d_data(data):
+  data = np.array(data)
+  plt.xlabel("first_column")
+  plt.ylabel("second_column")
+  plt.scatter(data[:, 0], data[:, 1])
+
+  plt.show()
+
+data =  reduce_with_pca()
+print data
+print data.shape
+
+plot_2d_data(data)
