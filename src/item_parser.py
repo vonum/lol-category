@@ -2,7 +2,7 @@ from dataset_io import read_json
 
 items = read_json('../raw_data/item.json')['data']
 
-def parse_items_for_player(player):
+def parse_items_for_player(player, duration):
   #0 fhp
   #1 fmp
   #2 php_regen
@@ -24,7 +24,7 @@ def parse_items_for_player(player):
     player['stats']['item4'],
     player['stats']['item5']
   ]
-  stats = [0] * 10 #13
+  stats = [0] * 7 #13
 
   for player_item_id in player_items:
     if str(player_item_id) in items:
@@ -33,31 +33,31 @@ def parse_items_for_player(player):
 
       for stat in item_stats:
         if stat == 'FlatHPPoolMod':
-          stats[0] += item_stats[stat]
+          stats[0] += item_stats[stat]*100/duration
         elif stat == 'FlatMPPoolMod':
-          stats[1] += item_stats[stat]
+          stats[1] += item_stats[stat]*100/duration
         #elif stat == 'PercentHPRegenMod':
           #stats[2] += item_stats[stat] * 100
         #elif stat == 'PercentMPRegenMod':
         #  stats[3] += item_stats[stat] * 100
         elif stat == 'FlatArmorMod':
-          stats[2] += item_stats[stat]
+          stats[2] += item_stats[stat]*100/duration
         elif stat == 'FlatSpellBlockMod':
-          stats[3] += item_stats[stat]
+          stats[3] += item_stats[stat]*100/duration
         elif stat == 'FlatPhysicalDamageMod':
-          stats[4] += item_stats[stat]
+          stats[4] += item_stats[stat]*100/duration
         elif stat == 'FlatMagicDamageMod':
-          stats[5] += item_stats[stat]
-        elif stat == 'FlatMovementSpeedMod':
-          stats[6] += item_stats[stat]
-        elif stat == 'PercentMovementSpeedMod':
-          stats[7] += item_stats[stat] * 100
+          stats[5] += item_stats[stat]*100/duration
+        #elif stat == 'FlatMovementSpeedMod':
+        #  stats[6] += item_stats[stat]
+        #elif stat == 'PercentMovementSpeedMod':
+        #  stats[7] += item_stats[stat] * 100
         elif stat == 'PercentAttackSpeedMod':
-          stats[8] += item_stats[stat] * 100
+          stats[6] += item_stats[stat]*100/duration
         #elif stat == 'PercentCritChanceMod':
         #  stats[9] += item_stats[stat] * 100
-        elif stat == 'PercentLifeStealMod':
-          stats[9] += item_stats[stat] * 100
+        #elif stat == 'PercentLifeStealMod':
+        #  stats[9] += item_stats[stat] * 100
 
   return stats
 

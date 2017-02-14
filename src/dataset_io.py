@@ -1,3 +1,4 @@
+import numpy as np
 import json
 import csv
 
@@ -20,4 +21,5 @@ def read_csv(filename):
     for row in reader:
       data.append(row)
 
+  data = np.array(data).astype(np.float)
   return data

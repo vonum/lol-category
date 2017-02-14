@@ -3,9 +3,11 @@ from sklearn import decomposition
 from matplotlib import pyplot as plt
 
 from dataset_io import read_csv
+from transform_data import z_score
 
 def reduce_with_pca():
   data = read_csv('../formatted_data/player_stats_z_normalized.csv')
+  data = z_score(data)
 
   pca = decomposition.PCA(n_components=2)
   pca.fit(data)
