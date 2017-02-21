@@ -33,27 +33,27 @@ def parse_items_for_player(player, duration):
 
       for stat in item_stats:
         if stat == 'FlatHPPoolMod':
-          stats[0] += item_stats[stat]*100/duration
+          stats[0] += item_stats[stat]*1000/duration
         elif stat == 'FlatMPPoolMod':
-          stats[1] += item_stats[stat]*100/duration
+          stats[1] += item_stats[stat]*1000/duration
         #elif stat == 'PercentHPRegenMod':
           #stats[2] += item_stats[stat] * 100
         #elif stat == 'PercentMPRegenMod':
         #  stats[3] += item_stats[stat] * 100
         elif stat == 'FlatArmorMod':
-          stats[2] += item_stats[stat]*100/duration
+          stats[2] += item_stats[stat]*1000/duration
         elif stat == 'FlatSpellBlockMod':
-          stats[3] += item_stats[stat]*100/duration
+          stats[3] += item_stats[stat]*1000/duration
         elif stat == 'FlatPhysicalDamageMod':
-          stats[4] += item_stats[stat]*100/duration
+          stats[4] += item_stats[stat]*1000/duration
         elif stat == 'FlatMagicDamageMod':
-          stats[5] += item_stats[stat]*100/duration
+          stats[5] += item_stats[stat]*1000/duration
         #elif stat == 'FlatMovementSpeedMod':
         #  stats[6] += item_stats[stat]
         #elif stat == 'PercentMovementSpeedMod':
         #  stats[7] += item_stats[stat] * 100
         elif stat == 'PercentAttackSpeedMod':
-          stats[6] += item_stats[stat]*100/duration
+          stats[6] += item_stats[stat]*1000/duration
         #elif stat == 'PercentCritChanceMod':
         #  stats[9] += item_stats[stat] * 100
         #elif stat == 'PercentLifeStealMod':
