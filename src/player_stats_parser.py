@@ -1,5 +1,5 @@
 from dataset_io import read_json
-from item_parser import parse_items_for_player
+from item_parser import parse_items_for_player, parse_items_for_player2
 
 def format_player_stats():
   matches = read_json('../raw_data/matches1.json')
@@ -37,7 +37,7 @@ def format_player_stats():
       #player_stats.append(player['stats']['trueDamageDealt'])
       #player_stats.append(player['stats']['wardsPlaced']/duration)
       #player_stats.append(player['stats']['wardsKilled']/duration)
-      player_stats += parse_items_for_player(player, duration)
+      player_stats += parse_items_for_player2(player, duration)
       players_stats.append(player_stats)
 
   return players_stats

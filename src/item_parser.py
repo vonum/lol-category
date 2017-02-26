@@ -1,8 +1,7 @@
 from dataset_io import read_json
 
-items = read_json('../raw_data/item.json')['data']
-
 def parse_items_for_player(player, duration):
+  items = read_json('../raw_data/item.json')['data']
   #0 fhp
   #1 fmp
   #2 php_regen
@@ -61,3 +60,37 @@ def parse_items_for_player(player, duration):
 
   return stats
 
+def parse_items_for_player2(player, duration):
+  items = read_json('../raw_data/itemsnew.json')
+  player_items = [
+    player['stats']['item0'],
+    player['stats']['item1'],
+    player['stats']['item2'],
+    player['stats']['item3'],
+    player['stats']['item4'],
+    player['stats']['item5']
+  ]
+
+  stats = [0] * 6 #13
+
+  for player_item_id in player_items:
+    if str(player_item_id) in items:
+      item = items[str(player_item_id)]
+      if 'stats' in item:
+        item_stats = item['stats']
+        print item
+        for stat in item_stats:
+          if stat['s'] == 'ad':
+            stats[0] += stat['v']*100/duration
+          elif stat['s'] == 'ap':
+            stats[1] += stat['v']*100/duration
+          elif stat['s'] == 'hp':
+            stats[2] += stat['v']*100/duration
+          elif stat['s'] == 'mp':
+            stats[3] += stat['v']*100/duration
+          elif stat['s'] == 'armor':
+            stats[4] += stat['v']*100/duration
+          elif stat['s'] == 'mr':
+            stats[5] += stat['v']*100/duration
+
+  return stats
