@@ -2,10 +2,10 @@ from dataset_io import read_json
 from item_parser import parse_items_for_player, parse_items_for_player2
 
 def format_player_stats():
-  matches = read_json('../raw_data/matches1.json')
+  matches = read_json('../raw_data/matchesChallenger.json')
 
   players_stats = []
-  for match in matches['matches']:
+  for match in matches:
     duration = match['matchDuration']
     for player in match['participants']:
       player_stats = []
