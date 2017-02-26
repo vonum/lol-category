@@ -24,7 +24,7 @@ def ward_tree(data):
   print wardtree
 
 def db_scan(data, metric):
-  dbscan = DBSCAN(eps=1.5, min_samples=7, metric=metric, p=2).fit(data)
+  dbscan = DBSCAN(eps=1.5, min_samples=10, metric=metric, p=2).fit(data)
   print 'DBSCAN'
   #print dbscan.labels_
   print metrics.silhouette_score(data, dbscan.labels_)
@@ -44,7 +44,7 @@ def affinity_prop(data):
   print metrics.silhouette_score(data, af.labels_)
   print collections.Counter(af.labels_)
 
-k_means(np.array(data), 6)
+k_means(np.array(data), 2)
 db_scan(np.array(data), 'minkowski')
 mean_shift(np.array(data))
 affinity_prop(np.array(data))
