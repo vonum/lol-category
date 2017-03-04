@@ -23,7 +23,7 @@ def parse_items_for_player(player, duration):
     player['stats']['item4'],
     player['stats']['item5']
   ]
-  stats = [0] * 6 #13
+  stats = [0] * 5 #13
 
   for player_item_id in player_items:
     if str(player_item_id) in items:
@@ -32,21 +32,21 @@ def parse_items_for_player(player, duration):
 
       for stat in item_stats:
         if stat == 'FlatHPPoolMod':
-          stats[0] += item_stats[stat]*100/duration
-        elif stat == 'FlatMPPoolMod':
-          stats[1] += item_stats[stat]*100/duration
+          stats[0] += item_stats[stat]/duration
+        #elif stat == 'FlatMPPoolMod':
+        #  stats[1] += item_stats[stat]/duration
         #elif stat == 'PercentHPRegenMod':
           #stats[2] += item_stats[stat] * 100
         #elif stat == 'PercentMPRegenMod':
         #  stats[3] += item_stats[stat] * 100
         elif stat == 'FlatArmorMod':
-          stats[2] += item_stats[stat]*100/duration
+          stats[2] += item_stats[stat]/duration
         elif stat == 'FlatSpellBlockMod':
-          stats[3] += item_stats[stat]*100/duration
+          stats[3] += item_stats[stat]/duration
         elif stat == 'FlatPhysicalDamageMod':
-          stats[4] += item_stats[stat]*100/duration
+          stats[4] += item_stats[stat]/duration
         elif stat == 'FlatMagicDamageMod':
-          stats[5] += item_stats[stat]*100/duration
+          stats[5] += item_stats[stat]/duration
         #elif stat == 'FlatMovementSpeedMod':
         #  stats[6] += item_stats[stat]
         #elif stat == 'PercentMovementSpeedMod':
@@ -60,7 +60,7 @@ def parse_items_for_player(player, duration):
 
   return stats
 
-def parse_items_for_player2(player, duration):
+def parse_items_for_player2(player, duration_coefficient):
   items = read_json('../raw_data/itemsnew.json')
   player_items = [
     player['stats']['item0'],
@@ -79,16 +79,16 @@ def parse_items_for_player2(player, duration):
       item_stats = item['stats']
       for stat in item_stats:
         if stat['s'] == 'ad':
-          stats[0] += stat['v']*100/duration
+          stats[0] += stat['v']*duration_coefficient
         elif stat['s'] == 'ap':
-          stats[1] += stat['v']*100/duration
+          stats[1] += stat['v']*duration_coefficient
         elif stat['s'] == 'hp':
-          stats[2] += stat['v']*100/duration
+          stats[2] += stat['v']*duration_coefficient
         #elif stat['s'] == 'mp':
         #  stats[3] += stat['v']*100/duration
         elif stat['s'] == 'armor':
-          stats[3] += stat['v']*100/duration
+          stats[3] += stat['v']*duration_coefficient
         elif stat['s'] == 'mr':
-          stats[4] += stat['v']*100/duration
+          stats[4] += stat['v']*duration_coefficient
 
   return stats

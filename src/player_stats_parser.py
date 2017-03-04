@@ -6,7 +6,7 @@ def format_player_stats():
 
   players_stats = []
   for match in matches:
-    duration = match['matchDuration']/60
+    duration = duration_coefficient(match['matchDuration']/60)
     for player in match['participants']:
       player_stats = []
       #player_stats.append(player['timeline']['creepsPerMinDeltas']['zeroToTen'])
@@ -42,3 +42,13 @@ def format_player_stats():
       players_stats.append(player_stats)
 
   return players_stats
+
+def duration_coefficient(duration):
+  if duration >= 30 and duration < 35:
+    duration_coefficient = 1.5
+  elif duration >= 35 and duration < 40:
+    duration_coefficient = 1.3
+  else:
+    duration_coefficient = 1
+
+  return duration_coefficient
