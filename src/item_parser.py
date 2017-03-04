@@ -71,7 +71,7 @@ def parse_items_for_player2(player, duration):
     player['stats']['item5']
   ]
 
-  stats = [0] * 6 #13
+  stats = [0] * 5 #13
 
   for player_item_id in player_items:
     if str(player_item_id) in items:
@@ -84,11 +84,11 @@ def parse_items_for_player2(player, duration):
           stats[1] += stat['v']*100/duration
         elif stat['s'] == 'hp':
           stats[2] += stat['v']*100/duration
-        elif stat['s'] == 'mp':
-          stats[3] += stat['v']*100/duration
+        #elif stat['s'] == 'mp':
+        #  stats[3] += stat['v']*100/duration
         elif stat['s'] == 'armor':
-          stats[4] += stat['v']*100/duration
+          stats[3] += stat['v']*100/duration
         elif stat['s'] == 'mr':
-          stats[5] += stat['v']*100/duration
+          stats[4] += stat['v']*100/duration
 
   return stats
