@@ -14,7 +14,14 @@ def reduce_with_pca(data):
 
 def plot_2d_data(data, labels):
   markers = ('s', 'd', 'o')
-  colors = {0: 'yellow', 1: 'blue', 2: 'lightgreen', 3: 'orange'}
+  colors = {0: 'yellow',
+            1: 'blue',
+            2: 'lightgreen',
+            3: 'orange',
+            4: 'cyan',
+            5: 'magenta',
+            6: 'black',
+            7: 'white'}
 
   #plt.scatter(data[:, 0], data[:, 1],
   #            marker=markers(labels[:]),
