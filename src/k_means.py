@@ -23,6 +23,14 @@ def k_means(data, n_clusters):
   reduced_data = reduce_with_pca(data)
   plot_2d_data(reduced_data, kmeans.labels_)
 
+  distances = np.array([])
+  for row in data:
+    distances = np.append(distances,
+       np.linalg.norm(row - kmeans.cluster_centers_[4]))
+  print distances.shape
+  print distances[0:10]
+  print distances.argsort()[:5]
+
 k_means(np.array(data), int(sys.argv[1]))
 print 'Data shape'
 print data.shape
