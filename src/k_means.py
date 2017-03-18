@@ -3,6 +3,8 @@ import sys
 from sklearn.cluster import KMeans
 from sklearn import metrics
 from sklearn.preprocessing import StandardScaler
+
+from scipy.stats import zscore
 import numpy as np
 
 from dataset_io import read_csv
@@ -11,7 +13,7 @@ from data_visualizer import *
 import collections
 
 data = read_csv('../formatted_data/player_stats_z_normalized.csv')
-#data = z_score(data)
+data = zscore(data)
 data = StandardScaler().fit_transform(data)
 
 def k_means(data, n_clusters):
