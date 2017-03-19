@@ -3,10 +3,11 @@ import sys
 from sklearn.cluster import SpectralClustering
 from sklearn import metrics
 from sklearn.preprocessing import StandardScaler
+
+from scipy.stats import zscore
 import numpy as np
 
 from dataset_io import read_csv
-from transform_data import z_score
 from data_visualizer import *
 import collections
 
@@ -29,4 +30,3 @@ def spectral(data, n_clusters):
 spectral(np.array(data), int(sys.argv[1]))
 print 'Data shape'
 print data.shape
-

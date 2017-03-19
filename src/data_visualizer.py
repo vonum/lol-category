@@ -3,7 +3,6 @@ from sklearn import decomposition
 from matplotlib import pyplot as plt
 
 from dataset_io import read_csv
-from transform_data import z_score
 
 def reduce_with_pca(data):
 

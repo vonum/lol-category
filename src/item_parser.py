@@ -11,7 +11,7 @@ def parse_items_for_player(player, duration_coefficient):
     player['stats']['item5']
   ]
 
-  stats = [0] * 5 #13
+  stats = [0] * 7 #7
 
   for player_item_id in player_items:
     if str(player_item_id) in items:
@@ -24,11 +24,13 @@ def parse_items_for_player(player, duration_coefficient):
           stats[1] += stat['v']*duration_coefficient
         elif stat['s'] == 'hp':
           stats[2] += stat['v']*duration_coefficient
-        #elif stat['s'] == 'mp':
-        #  stats[3] += stat['v']*duration_coefficient
         elif stat['s'] == 'armor':
           stats[3] += stat['v']*duration_coefficient
         elif stat['s'] == 'mr':
           stats[4] += stat['v']*duration_coefficient
+        elif stat['s'] == 'asp':
+          stats[5] += stat['v']*duration_coefficient
+        elif stat['s'] == 'critp':
+          stats[6] += stat['v']*duration_coefficient
 
   return stats
