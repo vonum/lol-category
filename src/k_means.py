@@ -13,24 +13,31 @@ from stats_analyzer import find_cluster_representatives
 
 import collections
 
-data = read_csv('../formatted_data/player_stats_z_normalized.csv')
-#data = zscore(data)
-data = StandardScaler().fit_transform(data)
+unnormalized_data = read_csv('../formatted_data/player_stats_z_normalized.csv')
+# data = zscore(unnormalized_data)
+data = StandardScaler().fit_transform(unnormalized_data)
 
 def k_means(data, n_clusters):
-  kmeans = KMeans(n_clusters = n_clusters, random_state=0).fit(data)
+  kmeans = KMeans(n_clusters=n_clusters,
+                  n_init=10,
+                  init='k-means++',
+                  random_state=0).fit(data)
   # print kmeans.labels_
   print 'K-Means'
   print collections.Counter(kmeans.labels_)
   print metrics.silhouette_score(data, kmeans.labels_)
-  # reduced_data = reduce_with_pca(data)
-  # plot_2d_data(reduced_data, kmeans.labels_)
 
-  for cluster_idx in range(0, 6):
+  print len(kmeans.cluster_centers_)
+  for cluster_idx in range(0, len(kmeans.cluster_centers_)):
     single_cluster_data = [x for idx, x in enumerate(data) if kmeans.labels_[idx] == cluster_idx]
 
     print "Cluster {0}".format(cluster_idx)
-    min_dist = find_cluster_representatives(single_cluster_data, kmeans.cluster_centers_[cluster_idx])
+    min_dist = find_cluster_representatives(data, kmeans.cluster_centers_[cluster_idx])
+
+    # for point_idx in min_dist:
+    #   print kmeans.labels_[point_idx]
+    #   print unnormalized_data[point_idx]
+
     print min_dist
     print "************************************************************"
 

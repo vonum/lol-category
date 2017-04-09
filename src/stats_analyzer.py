@@ -21,7 +21,8 @@ def print_point_details(point_index):
 
   match_index, player_index = calculate_index(point_index)
 
-  print  get_item_names(matches[match_index]['participants'][player_index])
+  print matches[match_index]['participants'][player_index]['championId']
+  print get_item_names(matches[match_index]['participants'][player_index])
 
 def calculate_index(number):
   match_index = number/10
@@ -45,7 +46,7 @@ def get_item_names(player):
   for player_item_id in player_items:
     if str(player_item_id) in items:
       item = items[str(player_item_id)]
-      player_item_names.append(item['name'])
+      player_item_names.append([player_item_id, item['name']])
 
   return player_item_names
 
