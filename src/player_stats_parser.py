@@ -1,5 +1,6 @@
 from dataset_io import read_json
 from item_parser import parse_items_for_player
+import numpy as np
 
 def format_player_stats():
   matches = read_json('../raw_data/matchesChallenger10.json')
@@ -41,7 +42,7 @@ def format_player_stats():
       player_stats += parse_items_for_player(player, duration)
       players_stats.append(player_stats)
 
-  return players_stats
+  return np.array(players_stats)
 
 def duration_coefficient(duration):
   if duration >= 30 and duration < 35:

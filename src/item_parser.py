@@ -11,7 +11,7 @@ def parse_items_for_player(player, duration_coefficient):
     player['stats']['item5']
   ]
 
-  stats = [0] * 7 #7
+  stats = [0] * 6 #7
 
   for player_item_id in player_items:
     if str(player_item_id) in items:
@@ -30,7 +30,5 @@ def parse_items_for_player(player, duration_coefficient):
           stats[4] += stat['v']*duration_coefficient
         elif stat['s'] == 'asp':
           stats[5] += stat['v']*duration_coefficient
-        elif stat['s'] == 'critp':
-          stats[6] += stat['v']*duration_coefficient
 
   return stats
