@@ -10,11 +10,10 @@ def find_cluster_representatives(data, cluster_center):
        np.linalg.norm(row - cluster_center))
 
   min_dist = distances.argsort()[:5]
+  max_dist = np.argsort(-distances)[:5]
 
-  for point in min_dist:
-    print_point_details(point)
 
-  return min_dist
+  return (min_dist, max_dist)
 
 def print_point_details(point_index):
   matches = read_json('../raw_data/matchesChallenger10.json')

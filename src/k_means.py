@@ -9,7 +9,7 @@ import numpy as np
 
 from dataset_io import read_csv
 from data_visualizer import *
-from stats_analyzer import find_cluster_representatives
+import stats_analyzer
 
 import collections
 
@@ -32,13 +32,15 @@ def k_means(data, n_clusters):
     single_cluster_data = [x for idx, x in enumerate(data) if kmeans.labels_[idx] == cluster_idx]
 
     print "Cluster {0}".format(cluster_idx)
-    min_dist = find_cluster_representatives(data, kmeans.cluster_centers_[cluster_idx])
+    min_dist, max_dist = stats_analyzer.find_cluster_representatives(data, kmeans.cluster_centers_[cluster_idx])
 
-    # for point_idx in min_dist:
-    #   print kmeans.labels_[point_idx]
-    #   print unnormalized_data[point_idx]
+    for point_idx in min_dist:
+      stats_analyzer.print_point_details(point_idx)
+      print kmeans.labels_[point_idx]
+      print unnormalized_data[point_idx]
 
     print min_dist
+    print max_dist
     print "************************************************************"
 
 k_means(np.array(data), int(sys.argv[1]))
