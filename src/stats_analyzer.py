@@ -2,6 +2,8 @@ import numpy as np
 
 from dataset_io import read_json
 
+matches = read_json('../raw_data/matchesChallenger10.json')
+
 def find_cluster_representatives(data, cluster_center):
   distances = np.array([])
 
@@ -16,8 +18,6 @@ def find_cluster_representatives(data, cluster_center):
   return (min_dist, max_dist)
 
 def print_point_details(point_index):
-  matches = read_json('../raw_data/matchesChallenger10.json')
-
   match_index, player_index = calculate_index(point_index)
 
   print matches[match_index]['participants'][player_index]['championId']

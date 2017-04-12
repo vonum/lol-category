@@ -16,13 +16,13 @@ data = zscore(data)
 data = StandardScaler().fit_transform(data)
 
 def em(data):
-  gmm = GaussianMixture(n_components=5, covariance_type="tied").fit(data)
+  gmm = GaussianMixture(n_components=6, covariance_type="tied").fit(data)
   predicted_data = gmm.predict(data)
 
   print collections.Counter(predicted_data)
   print metrics.silhouette_score(data, predicted_data)
 
-  reduced_data = reduce_with_pca(data)
+  reduced_data = reduce_with_pca(data, 3)
   plot_2d_data(reduced_data, predicted_data)
 
 em(data)
