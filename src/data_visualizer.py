@@ -14,6 +14,13 @@ colors = {0: 'yellow',
           5: 'magenta',
           6: 'black',
           7: 'white'}
+legend = {0: 'Assassin',
+          1: 'Mage',
+          2: 'Bruiser',
+          3: 'Tank',
+          4: 'Support',
+          5: 'Marksman',
+          6: 'None'}
 
 def reduce_with_pca(data, n_components):
 
@@ -33,7 +40,9 @@ def plot_2d_data(data, labels):
   for idx, row in enumerate(data):
     plt.scatter(row[0], row[1],
                 c=colors.get(labels[idx], 'red'),
-                marker='o')
+                marker='o',
+                label=legend.get(labels[idx], 'None'))
+  plt.legend(loc='upper left', numpoints=1, ncol=2, fontsize=8, bbox_to_anchor=(0, 0))
 
   plt.show()
 
@@ -44,6 +53,9 @@ def plot_3d_data(data, labels):
   for idx, row in enumerate(data):
     plt.scatter(row[0], row[1], row[2],
                 c=colors.get(labels[idx], 'red'),
-                marker='o')
+                marker='o',
+                label=legend.get(labels[idx], 'none'))
+
+  plt.legend('upper left', numpoints=1, ncol=1, fontsize=8, bbox_to_anchor=(0, 0))
 
   plt.show()

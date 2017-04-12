@@ -43,8 +43,8 @@ def k_means(data, n_clusters):
     print max_dist
     print "************************************************************"
 
-  reduced_data = reduce_with_pca(data, 3)
-  plot_3d_data(reduced_data, kmeans.labels_)
+  reduced_data = reduce_with_pca(data, 2)
+  plot_2d_data(reduced_data, kmeans.labels_)
 
 k_means(np.array(data), int(sys.argv[1]))
 print 'Data shape'
