@@ -48,4 +48,3 @@ def get_item_names(player):
       player_item_names.append([player_item_id, item['name']])
 
   return player_item_names
-

@@ -13,7 +13,7 @@ colors = {0: 'yellow',
           4: 'cyan',
           5: 'magenta',
           6: 'black',
-          7: 'white'}
+          7: 'grey'}
 legend = {0: 'Assassin',
           1: 'Mage',
           2: 'Bruiser',
@@ -42,7 +42,7 @@ def plot_2d_data(data, labels):
                 c=colors.get(labels[idx], 'red'),
                 marker='o',
                 label=legend.get(labels[idx], 'None'))
-  plt.legend(loc='upper left', numpoints=1, ncol=2, fontsize=8, bbox_to_anchor=(0, 0))
+  # plt.legend(loc='upper left', numpoints=1, ncol=2, fontsize=8, bbox_to_anchor=(0, 0))
 
   plt.show()
 
