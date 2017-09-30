@@ -12,7 +12,6 @@ from data_visualizer import *
 import collections
 
 data = read_csv('../formatted_data/player_stats_z_normalized.csv')
-#data = zscore(data)
 data = StandardScaler().fit_transform(data)
 
 def cluster2d(data, n_clusters):
@@ -26,5 +25,3 @@ def cluster2d(data, n_clusters):
   plot_2d_data(reduced_data, kmeans.labels_)
 
 cluster2d(np.array(data), int(sys.argv[1]))
-print 'Data shape'
-print data.shape

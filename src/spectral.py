@@ -14,7 +14,6 @@ import stats_analyzer
 import collections
 
 data = read_csv('../formatted_data/player_stats_z_normalized.csv')
-#data = z_score(data)
 data = StandardScaler().fit_transform(data)
 
 def spectral(data):
@@ -32,5 +31,3 @@ def spectral(data):
   plot_2d_data(reduced_data, spectral.labels_)
 
 spectral(np.array(data))
-print 'Data shape'
-print data.shape

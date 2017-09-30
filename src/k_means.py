@@ -14,7 +14,6 @@ import stats_analyzer
 import collections
 
 unnormalized_data = read_csv('../formatted_data/player_stats_z_normalized.csv')
-# data = zscore(unnormalized_data)
 data = StandardScaler().fit_transform(unnormalized_data)
 
 def k_means(data, n_clusters):
@@ -22,7 +21,6 @@ def k_means(data, n_clusters):
                   n_init=10,
                   init='k-means++',
                   random_state=0).fit(data)
-  # print kmeans.labels_
   print 'K-Means'
   print collections.Counter(kmeans.labels_)
   print metrics.silhouette_score(data, kmeans.labels_)
@@ -47,5 +45,3 @@ def k_means(data, n_clusters):
   plot_2d_data(reduced_data, kmeans.labels_)
 
 k_means(np.array(data), int(sys.argv[1]))
-print 'Data shape'
-print data.shape

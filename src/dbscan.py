@@ -18,12 +18,9 @@ data = StandardScaler().fit_transform(data)
 def db_scan(data, eps, min_samples, metric):
   dbscan = DBSCAN(eps=eps, min_samples=min_samples, metric=metric).fit(data)
   print 'DBSCAN'
-  #print dbscan.labels_
   print metrics.silhouette_score(data, dbscan.labels_)
   print collections.Counter(dbscan.labels_)
   reduced_data = reduce_with_pca(data)
   plot_2d_data(reduced_data, dbscan.labels_)
 
 db_scan(np.array(data), float(sys.argv[1]), float(sys.argv[2]), 'euclidean')
-print 'Data shape'
-print data.shape

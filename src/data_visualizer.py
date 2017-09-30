@@ -30,19 +30,13 @@ def reduce_with_pca(data, n_components):
   return pca.fit_transform(data)
 
 def plot_2d_data(data, labels):
-
-  #plt.scatter(data[:, 0], data[:, 1],
-  #            marker=markers(labels[:]),
-  #            c=colors(labels[:])
   plt.figure()
-
 
   for idx, row in enumerate(data):
     plt.scatter(row[0], row[1],
                 c=colors.get(labels[idx], 'red'),
                 marker='o',
                 label=legend.get(labels[idx], 'None'))
-  # plt.legend(loc='upper left', numpoints=1, ncol=2, fontsize=8, bbox_to_anchor=(0, 0))
 
   plt.show()
 

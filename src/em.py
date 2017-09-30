@@ -12,7 +12,6 @@ from data_visualizer import *
 import collections
 
 data = read_csv('../formatted_data/player_stats_z_normalized.csv')
-# data = zscore(data)
 data = StandardScaler().fit_transform(data)
 
 def em(data):

@@ -13,9 +13,9 @@ def format_player_stats():
 
       player_stats.append(100*player['stats']['physicalDamageDealt']/(player['stats']['totalDamageDealt']))
       player_stats.append(100*player['stats']['magicDamageDealt']/(player['stats']['totalDamageDealt']))
-      #player_stats.append(player['stats']['trueDamageDealt'])
-      #player_stats.append(player['stats']['wardsPlaced']/duration)
-      #player_stats.append(player['stats']['wardsKilled']/duration)
+      # player_stats.append(player['stats']['trueDamageDealt'])
+      # player_stats.append(player['stats']['wardsPlaced']/duration)
+      # player_stats.append(player['stats']['wardsKilled']/duration)
       player_stats += parse_items_for_player(player, duration)
       players_stats.append(player_stats)
 

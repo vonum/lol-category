@@ -9,7 +9,6 @@ from data_visualizer import *
 import collections
 
 data = read_csv('../formatted_data/player_stats_z_normalized.csv')
-#data = z_score(data)
 data = StandardScaler().fit_transform(data)
 
 def mini_batch_k_means(data, n_clusters):
@@ -22,18 +21,14 @@ def ward_tree(data):
 def mean_shift(data):
   mean_shift = MeanShift(cluster_all=False, n_jobs=1).fit(data)
   print 'Mean Shift'
-  #print mean_shift.labels_
   print metrics.silhouette_score(data, mean_shift.labels_)
   print collections.Counter(mean_shift.labels_)
 
 def affinity_prop(data):
   af = AffinityPropagation(damping=0.5, convergence_iter=15, affinity='euclidean').fit(data)
-  #print af.labels_
   print 'Affinity Propagation'
   print metrics.silhouette_score(data, af.labels_)
   print collections.Counter(af.labels_)
 
-#mean_shift(np.array(data))
-#affinity_prop(np.array(data))
-print 'Data shape'
-print data.shape
+# mean_shift(np.array(data))
+# affinity_prop(np.array(data))
