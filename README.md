@@ -73,7 +73,8 @@ people who played in shorter matches would always have worse stats.
 ### Visualization
 
 Data was reduced to 2 dimensions from 7 dimensions (each attribute is one
-dimension) using PCA (Principal Component Analysis) and visualized in 2D.
+dimension) using
+[PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) (Principal Component Analysis) and visualized in 2D.
 
 ### Results
 
@@ -126,6 +127,16 @@ champion.
 
 [Silhouette Score](https://en.wikipedia.org/wiki/Silhouette_(clustering)) was
 used for validation of clustering algorithms.
+
+Also, for recognizing classes for clusters 10 best and worst examples were taken
+into account.
+Best examples are points in a cluster which have minimal distance to cluster
+center among all points in cluster.
+Worst examples are points in a cluster which have maximal distance to cluster
+center among all points in a cluster.
+
+After finding those examples, domain knowledge was used to assign classes to
+clusters.
 
 ### Potential Use
 
